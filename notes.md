@@ -1,3 +1,11 @@
+
+
+
+
+makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至更复杂的功能操作。
+
+make命令执行时，需要Makefile文件来告诉make命令如何去编译和链接。大多数的IDE都有这个命令，比如：Delphi的make，Visual C++的nmake，Linux下GNU的make。
+
 ## Makefile的规则
 
 ```makefile
@@ -104,8 +112,9 @@ clean:
 ```makefile
 make -f filename
 ```
+如`make -f Make.Linux` 文件名为“Make.Linux” 
 
-引用其它的Makefile
+### 引用其它的Makefile
 
 可以通过`include` 关键字把别的Makefile包含进来。
 
@@ -139,13 +148,13 @@ make支持三种通配符： `*`、`?`、`[...]`
 
 方法1：
 
-Makefile文件中的特殊变量`VPATH`来完成，如
+Makefile文件中的特殊变量`VPATH`来完成，注意这是大写，如
 
-`VPATH = src:../headers` make会按照"src"和"../headers"这两个目录去搜索。（目录由冒号分隔）
+`VPATH = src:../headers` make会按照"src"和"../headers"这两个目录去搜索。**（目录由冒号分隔）**，当前目录永远是最高优先搜索。
 
 方法2：
 
-使用make的`vpath`关键字（注意是全小写）
+使用make的`vpath`关键字（**注意是全小写**），这不是变量而是一个关键字。
 
 1.  vpath <pattern> <directories>
 
@@ -322,16 +331,3 @@ $(MAKE) -C subdir
 如果Makefile中出现一些相同的命令序列，可为它们定义一个变量。
 
 这种命令序列以`define`开始，`endef`结束。
-
-
-
-
-
-
-
-
-
-​	
-
-
-
